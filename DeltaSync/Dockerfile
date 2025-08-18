@@ -12,3 +12,4 @@ COPY --from=build /app /app
 RUN addgroup -S nodegrp && adduser -S node -G nodegrp
 USER node
 CMD ["node", "dist/index.js"]
+#this is it

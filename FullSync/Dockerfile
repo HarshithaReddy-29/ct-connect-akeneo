@@ -13,5 +13,5 @@ WORKDIR /app
 COPY --from=build /app /app
 RUN addgroup -S nodegrp && adduser -S node -G nodegrp
 USER node
-# these jobs typically compile index.ts -> dist/index.js
+# these jobs typically compile index.t -> dist/index.js
 CMD ["node", "dist/index.js"]

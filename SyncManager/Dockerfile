@@ -14,5 +14,5 @@ COPY --from=build /app /app
 # run as non-root
 RUN addgroup -S nodegrp && adduser -S node -G nodegrp
 USER node
-# SyncManager usually compiles app.ts -> dist/app.js (adjust if different)
+# SyncManager usually compiles app.ts -> dist/app.js (adjust f different)
 CMD ["node", "dist/app.js"]
