@@ -14,3 +14,9 @@ pnpm-lock.yaml
 coverage
 .vscode
 .idea
+.npmrc
+.npmrc.*
+*.npmrc
+*.npmrc.*
+.DS_Store
+yarn.lock

@@ -1,5 +1,5 @@
 # ---- build stage ----
-FROM node:20-alpine AS build
+FROM node:20-bookworm-slim AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
@@ -16,6 +16,7 @@ COPY --from=build --chown=node:node /app/build ./build
 COPY --from=build --chown=node:node /app/node_modules ./node_modules
 COPY --from=build --chown=node:node /app/package*.json ./
 ENV NODE_ENV=production
+RUN chown -R node:node /app
 USER node
 # Set the right entrypoint per app (this repo uses build/)
 # SyncManager:
