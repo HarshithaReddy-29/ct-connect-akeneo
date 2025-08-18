@@ -9,7 +9,7 @@ RUN npm run build
 RUN npm ci --omit=dev
 
 # ---- runtime stage ----
-FROM node:20-alpine
+FROM node:20-bookworm-slim
 WORKDIR /app
 # Copy only what you need, owned by the existing 'node' user
 COPY --from=build --chown=node:node /app/build ./build
