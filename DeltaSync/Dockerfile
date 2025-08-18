@@ -1,25 +1,19 @@
 # ---- build stage ----
-FROM node:20-bookworm-slim AS build
+FROM node:20.16.0-bookworm-slim AS build
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci
+RUN npm ci --no-audit --no-fund
 COPY . .
 RUN npm run build
-# Prefer a clean prod-only install for runtime
-RUN npm ci --omit=dev
+# prepare clean prod deps for runtime
+RUN npm ci --omit=dev --no-audit --no-fund
 
-# ---- runtime stage ----
-FROM node:20-bookworm-slim
+# ---- runtime stage (distroless, non-root) ----
+FROM gcr.io/distroless/nodejs20-debian12:nonroot
 WORKDIR /app
-# Copy only what you need, owned by the existing 'node' user
-COPY --from=build --chown=node:node /app/build ./build
-COPY --from=build --chown=node:node /app/node_modules ./node_modules
-COPY --from=build --chown=node:node /app/package*.json ./
+COPY --from=build /app/build ./build
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/package*.json ./
 ENV NODE_ENV=production
-RUN chown -R node:node /app
-USER node
-# Set the right entrypoint per app (this repo uses build/)
-# SyncManager:
-# CMD ["node", "build/index.js"]
-# FullSync / DeltaSync:
-CMD ["node", "build/index.js"]
+# Distroless has "node" as the entrypoint; pass the script only:
+CMD ["build/index.js"]
