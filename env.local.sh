@@ -1,0 +1,12 @@
+export AKENEO_BASE_URL="https://hcl-9095c85a9e.trial.akeneo.cloud/"
+export AKENEO_CLIENT_ID="12_2zozbtp0f18g0swccg0w4kck4ooggk8ckwck88sogsg40og8c8"
+export AKENEO_CLIENT_SECRET="46410ns5n4e8gc88kc0soo44ggg04oock88oc408gsokw8wk00"
+export AKENEO_USERNAME="commercetoolsconnector1_2345"
+export AKENEO_PASSWORD="352a82606"     
+export SET_PUBLISHED_TO_MODIFIED="true"
+# commercetools               
+export CTP_PROJECT_KEY="hcltech-b2c"
+export CTP_CLIENT_ID="Uf0oSRSedp00L_-9NDcAvnfa"  
+export CTP_CLIENT_SECRET="y-IGwNXl-249pa40DF6MEOruBLkNOk7a"                 
+export CTP_SCOPE="manage_project:hcltech-b2c"
+export CTP_REGION="us-central1.gcp"

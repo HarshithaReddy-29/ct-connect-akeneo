@@ -10,3 +10,16 @@ build/
 .env
 public/
 .connect/
+# secrets & logs
+*.pem
+*.key
+*id_rsa*
+*.log
+FullSync/fullsync.log
+
+# secrets & logs
+key
+*.pem
+*.key
+*id_rsa*
+*.log
