@@ -158,11 +158,11 @@ export const post = async (req: Request, res: Response, _next: NextFunction) => 
   assertEnv();
 
   // Defaults so you can just POST /job with no query
-  const family  = (req.query.family  as string) || 'clothing';
-  const typeKey = (req.query.typeKey as string) || 'clothing-ct';
+  const family  = (req.query.family  as string) || 'bags';
+  const typeKey = (req.query.typeKey as string) || 'bags-ct';
   const scope   = (req.query.scope   as string) || 'ecommerce';
   const locale  = (req.query.locale  as string) || 'en_US';
-  const limit   = parseInt((req.query.limit as string) || '25', 10);
+  const limit   = parseInt((req.query.limit as string) || '10', 10);
 
   logger.info(`[JOB] FullSync upsert (no-params needed) family='${family}', type='${typeKey}', limit=${limit}, scope='${scope}', locale='${locale}'`);
 
@@ -232,4 +232,4 @@ export const post = async (req: Request, res: Response, _next: NextFunction) => 
       error: err?.message || String(err),
     });
   }
-};
+}; 
